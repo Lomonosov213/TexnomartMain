@@ -1152,8 +1152,17 @@ if (priceSlider) {
 		priceSlider.noUiSlider.set([priceStartValue, priceEndValue]);
 	}
 
+	// привязка, чтоб пр перетаскивании ползунов в инпутах отображались значения
+	const snapValues = [
+		document.querySelector('.slider-range-value1'),
+		document.querySelector('.slider-range-value2')
+	];
 
-
+	priceSlider.noUiSlider.on('update', function (values, handle) {
+		snapValues[handle].value = Math.round(values[handle]);
+		//snapValues[handle].innerHTML = values[handle];
+	});
+	
 
 	/*	var rangeSliderValueElement = document.getElementById('slider-range-value');
 	
